@@ -1,9 +1,12 @@
-import { Bell, Home, Menu, Mic, Plus, Search, History, ListVideo, Youtube, Settings, MessageCircleQuestionMark, MessageSquareWarning, Palette } from 'lucide-react'
+import { Bell, Home, Menu, Mic, Plus, Search, History, ListVideo, Youtube, Settings, MessageCircleQuestionMark, MessageSquareWarning, Palette, YoutubeIcon, SquarePen, Radio, X } from 'lucide-react'
 import React, { useState, useContext, useEffect } from 'react'
 import { ThemeContext } from '../../contexts/ThemeContext'
 function Navbar() {
   const [textColor, setTextColor] = useState("white")
   const [menu, setMenu] = useState(true)
+  const [searchValue, setSearchValue] = useState("")
+  const [searchHistory, setSearchHistory] = useState(false)
+  const [createOption, setCreateOption] = useState(false)
   const { dark, changeTheme } = useContext(ThemeContext)
 
   useEffect(() => {
@@ -20,23 +23,44 @@ function Navbar() {
     { icon: <MessageCircleQuestionMark />, name: "Help" },
     { icon: <MessageSquareWarning />, name: "Send feedback" },
     { icon: <Palette />, name: `Theme mode`, function: changeTheme },
-  
-
 
   ]
 
+  const searchHistoryData = [
+    "Lofi hip hop radio - beats to relax/study",
+    "JavaScript Tutorial for Beginners 2026",
+    "How to make butter chicken at home",
+    "iPhone 17 Pro Max unboxing and review",
+    "Best travel destinations in India 2026",
+    "React vs Next.js: Which one to choose?",
+    "Funny cat videos compilation",
+    "Top 10 stocks to buy right now",
+    "Minecraft survival gameplay episode 1",
+    "Latest Bollywood movie trailers ",
+     "Lofi hip hop radio - beats to relax/study",
+    "JavaScript Tutorial for Beginners 2026",
+    "How to make butter chicken at home",
+    "iPhone 17 Pro Max unboxing and review",
+    "Best travel destinations in India 2026",
+    "React vs Next.js: Which one to choose?",
+    "Funny cat videos compilation",
+    "Top 10 stocks to buy right now",
+    "Minecraft survival gameplay episode 1",
+    "Latest Bollywood movie trailers ",
+
+  ]
 
   return (
     <>
       <div
         className={`w-full h-14 flex items-center justify-between px-3  backdrop-blur-md duration-500
                   ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"}  `}>
-
+           {/* logo  */}
         <div className=' flex gap-2 items-center '>
           <Menu
             onClick={() => setMenu(!menu)}
             size={40}
-            className={`${dark ? "text-white active:bg-[#191919]" : "text-[#242424]"}  rounded-full p-2 cursor-pointer`} />
+            className={`${dark ? "text-white active:bg-[#191919]" : "text-[#242424]"}  rounded-full p-2 cursor-pointer duration-500`} />
 
 
           <svg
@@ -72,36 +96,127 @@ function Navbar() {
         </div>
 
 
-
+          {/* serch bar */}
         <div className=' hidden md:flex gap-5'>
-          <div className='  borger flex gap-2 justify-between  border border-gray-600 items-center pl-3 rounded-full cursor-pointer '>
+          <div
+            onClick={() => setSearchHistory(!searchHistory)}
+            className='  borger flex gap-2 justify-between  border border-gray-600 items-center pl-3 rounded-full cursor-pointer '>
             <input
               type="text"
               name=""
               id=""
-
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder='Search'
               className={` rounded-full rounded-r-none ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "}  a  w-[70vh] focus:outline-none focus:duration-0   px-2 p-1  duration-500 overflow-auto`} />
             <Search className={`  p-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+              {/* search history */}
+            <div
+              className={`min-h-28 h-fit w-[75vh]    bg-[#191919] p-1 py-2    absolute     mx-auto   top-14  rounded-lg
+              ${dark ? "md:bg-[#181818] " : "bg-white "}
+             ${searchHistory ? "flex" : "hidden"} flex-col duration-500`}
+            >
+              {
+                searchHistoryData.map((data, i) => (
+
+                  <div key={i}
+                    onClick={() => setSearchValue(data)}
+                    className={` flex items-center gap-3 p-2 py-2   
+                      ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg
+                      `}
+                  ><History /> <span className='w-full overflow-hidden'>{data}</span><X /></div>
+
+                ))
+              }
+
+            </div>
+
           </div>
           <div>
-            <Mic className={`  rounded-full  p-2 ${dark ? "bg-[#191919] text-white" : "bg-white text-[#2424242]"} duration-500 cursor-pointer `} size={40} />
+            <Mic
+              className={`  rounded-full  p-2 
+             ${dark ? "bg-[#191919] text-white" : "bg-white text-[#2424242]"} duration-500 cursor-pointer `} size={40} />
           </div>
         </div>
+            {/* phone mode */}
+        <div className=' flex gap-4  items-center  '>
+          <div className=' flex md:hidden  '>
+            <Search
+              onClick={() => setSearchHistory(!searchHistory)}
+              className={` cursor-pointer  p-2 rounded-full ${dark ? "md:bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+             {/* phone search history */}
+            <div
+              className={`min-h-28 h-fit max-h-96 w-full   overflow-auto  no-scrollbar  bg-[#191919] p-1 py-2    absolute   left-0      top-14  
+              ${dark ? "md:bg-[#181818] " : "bg-white "}
+             ${searchHistory ? "flex" : "hidden"} flex-col duration-500`}
+            >
+              {
+                searchHistoryData.map((data, i) => (
 
-        <div className=' flex gap-4  items-center '>
-          <div className=' flex md:hidden '>
-            <Search className={`  p-2 rounded-full ${dark ? "md:bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+                  <div key={i}
+                    onClick={() => setSearchValue(data)}
+                    className={` cursor-pointer flex items-center gap-3 p-2 py-2   
+                      ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg
+                      `}
+                  ><History /> <span onClick={()=>setSearchHistory(!searchHistory)} className='w-full overflow-hidden'>{data}</span><X /></div>
 
+                ))
+              }
+
+            </div>
           </div>
-          <div className=' flex md:hidden '>
+          <div
+            onClick={() => setCreateOption(!createOption)}
+            className=' flex md:hidden '>
             <Plus className={`  p-2 rounded-full ${dark ? "md:bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
-
+            <div
+              className={`h-fit w-36 bg-[#191919] p-1 py-2    absolute  top-14  right-16 rounded-lg
+              ${dark ? "md:bg-[#181818] " : "bg-white "}
+             ${createOption ? "flex" : "hidden"} flex-col duration-500`}>
+              <div
+                className={` flex p-2 gap-3 cursor-pointer   text-sm items-center ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg`}
+              >
+                <YoutubeIcon /> Upload video
+              </div>
+              <div
+                className={` flex p-2 gap-3 cursor-pointer   text-sm items-center ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg`}
+              >
+                <Radio /> Go live
+              </div>
+              <div
+                className={` flex p-2 gap-3 cursor-pointer  text-sm items-center ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg`}
+              >
+                <SquarePen /> Create post
+              </div>
+            </div>
           </div>
-          <div className={` hidden md:flex items-center gap-2 rounded-full px-3  p-2 ${dark ? "bg-[#191919] " : "bg-white "} duration-500 cursor-pointer `}>
+          <div
+            onClick={() => setCreateOption(!createOption)}
+            className={` cursor-pointer hidden md:flex items-center gap-2 rounded-full px-3  p-2 ${dark ? "bg-[#191919] " : "bg-white "} duration-500 cursor-pointer `}>
             <Plus /> Create
+
+            <div
+              className={`h-fit w-36 bg-[#191919] p-1 py-2    absolute  top-14  right-16 rounded-lg
+              ${dark ? "md:bg-[#181818] " : "bg-white "}
+             ${createOption ? "flex" : "hidden"} flex-col duration-500`}>
+              <div
+                className={` flex p-2 gap-3 cursor-pointer   text-sm items-center ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg`}
+              >
+                <YoutubeIcon /> Upload video
+              </div>
+              <div
+                className={` flex p-2 gap-3 cursor-pointer   text-sm items-center ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg`}
+              >
+                <Radio /> Go live
+              </div>
+              <div
+                className={` flex p-2 gap-3 cursor-pointer  text-sm items-center ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg`}
+              >
+                <SquarePen /> Create post
+              </div>
+            </div>
           </div>
-          <div className={` p-2 rounded-full ${dark ? "hover:bg-[#181818] " : null} duration-500 cursor-pointer  `}>
+          <div className={` cursor-pointer p-2 rounded-full ${dark ? "hover:bg-[#181818] " : null} duration-500 cursor-pointer  `}>
             <Bell />
           </div>
         </div>
@@ -109,15 +224,27 @@ function Navbar() {
 
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
       <div className={`w-60 h-[100%] flex flex-col  p-2  z-50 fixed top-0  
-         ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"} 
+         ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242] "} duration-500
            ${menu ? "-left-60" : "left-0"} duration-200 `}
       >
         <div className=' flex gap-2 items-center '>
           <Menu
             onClick={() => setMenu(!menu)}
             size={40}
-            className={`${dark ? "text-white active:bg-[#191919]" : "text-[#242424] "}  rounded-full p-2 cursor-pointer`} />
+            className={`${dark ? "text-white active:bg-[#191919]" : "text-[#242424] "}  rounded-full p-2 cursor-pointer duration-500`} />
 
 
           <svg
@@ -153,14 +280,14 @@ function Navbar() {
         </div>
         <div className='w-full h-full flex flex-col overflow-auto no-scrollbar '>
           {menuList.map((item, i) => (
-            <>
-              <div
-                key={i}
-                onClick={item.function}
-                className={` flex p-2 gap-3 cursor-pointer ${dark ? " hover:bg-[#191919] " : "hover:bg-gray-200" } rounded-lg`} >
-                <span>{item.icon}</span><span>{item.name}</span>
-              </div>
-            </>
+
+            <div
+              key={i}
+              onClick={item.function}
+              className={` flex p-2 gap-3 cursor-pointer ${dark ? " hover:bg-[#191919] " : "hover:bg-gray-200"} rounded-lg`} >
+              <span>{item.icon}</span><span>{item.name}</span>
+            </div>
+
           ))}
         </div>
       </div>
