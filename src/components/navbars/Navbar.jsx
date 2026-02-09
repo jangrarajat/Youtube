@@ -199,7 +199,7 @@ function Navbar() {
                           onChange={(e) => setSearchValue(e.target.value)}
                           placeholder='Search'
                           className={` rounded-full rounded-r-none ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "}     w-full focus:outline-none focus:duration-0   px-2 p-1  duration-500 overflow-auto`} />
-                        <Search className={`  p-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+                        <Search onClick={()=>setSearchHistory(!searchHistory)} className={`  px-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
 
 
 
