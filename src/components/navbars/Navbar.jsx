@@ -223,7 +223,7 @@ function Navbar() {
             className=' flex md:hidden '>
             <Plus className={`  p-2 rounded-full ${dark ? "md:bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
             <div
-              className={`h-fit w-36 bg-[#191919] p-1 py-2    absolute  top-14  right-16 rounded-lg
+              className={` z-50 h-fit w-36 bg-[#191919] p-1 py-2    absolute  top-28  right-16 rounded-lg
               ${dark ? "md:bg-[#181818] " : "bg-white "}
              ${createOption ? "flex" : "hidden"} flex-col duration-500`}>
               <div
@@ -249,7 +249,7 @@ function Navbar() {
             <Plus /> Create
 
             <div
-              className={`h-fit w-36 bg-[#191919] p-1 py-2    absolute  top-14  right-16 rounded-lg
+              className={`h-fit w-36 bg-[#191919] p-1 py-2    absolute  top-28  right-16 rounded-lg
               ${dark ? "md:bg-[#181818] " : "bg-white "}
              ${createOption ? "flex" : "hidden"} flex-col duration-500`}>
               <div
@@ -277,8 +277,8 @@ function Navbar() {
 
       </div>
 
-
-      <div className={`     w-full h-14 flex flex-row gap-3 
+       {/* filter tag bar  */}
+      <div className={`  z-10   w-full h-14 flex flex-row gap-3 
                        overflow-x-scroll 
                        whitespace-nowrap flex-nowrap
                        px-5 no-scrollbar items-center
