@@ -27,23 +27,7 @@ function Navbar() {
 
   ]
 
-  const filterTag = ["all",
-    "gaming",
-    "music",
-    "live",
-    " mixes",
-    "indian music",
-    "gaming",
-    "music",
-    "live",
-    " mixes",
-    "indian music",
-    "gaming",
-    "music",
-    "live",
-    " mixes",
-    "indian music",
-  ]
+ 
 
   const searchHistoryData = [
     "Lofi hip hop radio - beats to relax/study",
@@ -277,26 +261,8 @@ function Navbar() {
 
       </div>
 
-       {/* filter tag bar  */}
-      <div className={`  z-10   w-full h-14 flex flex-row gap-3 
-                       overflow-x-scroll 
-                       whitespace-nowrap flex-nowrap
-                       px-5 no-scrollbar items-center
-                       backdrop-blur-md duration-500
-                  ${dark ? "bg-[#242424]  text-white" : "bg-white text-[#2424242]"}  `}>
-        {
-          filterTag.map((tag, i) => (
+     
 
-            <div key={i}
-              className={`p-2 px-3 whitespace-nowrap rounded-lg w-fit   text-sm uppercase   ${dark ? "bg-[#181818]  text-white" : "bg-gray-200 text-[#2424242]"}  duration-500`}
-            >
-              {tag}
-            </div>
-
-          ))
-        }
-
-      </div>
 
 
       {/* menu ride bar  */}
@@ -358,6 +324,9 @@ function Navbar() {
           ))}
         </div>
       </div>
+
+
+    
     </>
   )
 }
