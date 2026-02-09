@@ -1,4 +1,4 @@
-import { Bell, Home, Menu, Mic, Plus, Search, History, ListVideo, Youtube, Settings, MessageCircleQuestionMark, MessageSquareWarning, Palette, YoutubeIcon, SquarePen, Radio, X } from 'lucide-react'
+import { Bell, Home, Menu, Mic, Plus, Search, History, ListVideo, Youtube, Settings, MessageCircleQuestionMark, MessageSquareWarning, Palette, YoutubeIcon, SquarePen, Radio, X, ArrowLeft } from 'lucide-react'
 import React, { useState, useContext, useEffect } from 'react'
 import { ThemeContext } from '../../contexts/ThemeContext'
 function Navbar() {
@@ -6,6 +6,7 @@ function Navbar() {
   const [menu, setMenu] = useState(true)
   const [searchValue, setSearchValue] = useState("")
   const [searchHistory, setSearchHistory] = useState(false)
+  const [phoneSearchBar, setPhoneSearchBar] = useState(false)
   const [createOption, setCreateOption] = useState(false)
   const { dark, changeTheme } = useContext(ThemeContext)
 
@@ -35,9 +36,29 @@ function Navbar() {
     "React vs Next.js: Which one to choose?",
     "Funny cat videos compilation",
     "Top 10 stocks to buy right now",
-    "Minecraft survival gameplay episode 1",
-    "Latest Bollywood movie trailers ",
-     "Lofi hip hop radio - beats to relax/study",
+   
+ "Lofi hip hop radio - beats to relax/study",
+    "JavaScript Tutorial for Beginners 2026",
+    "How to make butter chicken at home",
+    "iPhone 17 Pro Max unboxing and review",
+    "Best travel destinations in India 2026",
+    "React vs Next.js: Which one to choose?",
+    "Funny cat videos compilation",
+    "Top 10 stocks to buy right now", "Lofi hip hop radio - beats to relax/study",
+    "JavaScript Tutorial for Beginners 2026",
+    "How to make butter chicken at home",
+    "iPhone 17 Pro Max unboxing and review",
+    "Best travel destinations in India 2026",
+    "React vs Next.js: Which one to choose?",
+    "Funny cat videos compilation",
+    "Top 10 stocks to buy right now", "Lofi hip hop radio - beats to relax/study",
+    "JavaScript Tutorial for Beginners 2026",
+    "How to make butter chicken at home",
+    "iPhone 17 Pro Max unboxing and review",
+    "Best travel destinations in India 2026",
+    "React vs Next.js: Which one to choose?",
+    "Funny cat videos compilation",
+    "Top 10 stocks to buy right now", "Lofi hip hop radio - beats to relax/study",
     "JavaScript Tutorial for Beginners 2026",
     "How to make butter chicken at home",
     "iPhone 17 Pro Max unboxing and review",
@@ -45,9 +66,6 @@ function Navbar() {
     "React vs Next.js: Which one to choose?",
     "Funny cat videos compilation",
     "Top 10 stocks to buy right now",
-    "Minecraft survival gameplay episode 1",
-    "Latest Bollywood movie trailers ",
-
   ]
 
   return (
@@ -55,7 +73,7 @@ function Navbar() {
       <div
         className={`w-full h-14 flex items-center justify-between px-3  backdrop-blur-md duration-500
                   ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"}  `}>
-           {/* logo  */}
+        {/* logo  */}
         <div className=' flex gap-2 items-center '>
           <Menu
             onClick={() => setMenu(!menu)}
@@ -96,7 +114,7 @@ function Navbar() {
         </div>
 
 
-          {/* serch bar */}
+        {/* serch bar */}
         <div className=' hidden md:flex gap-5'>
           <div
             onClick={() => setSearchHistory(!searchHistory)}
@@ -109,10 +127,13 @@ function Navbar() {
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder='Search'
               className={` rounded-full rounded-r-none ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "}  a  w-[70vh] focus:outline-none focus:duration-0   px-2 p-1  duration-500 overflow-auto`} />
-            <Search className={`  p-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
-              {/* search history */}
+            <Search
+              onClick={() => setSearchHistory(!searchHistory)}
+              className={`  p-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+            {/* search history */}
+
             <div
-              className={`min-h-28 h-fit w-[75vh]    bg-[#191919] p-1 py-2    absolute     mx-auto   top-14  rounded-lg
+              className={`min-h-28 h-fit max-h-80  w-[75vh] overflow-y-scroll scrollbar-hide-track   bg-[#191919] p-1 py-2    absolute     mx-auto   top-14  rounded-lg
               ${dark ? "md:bg-[#181818] " : "bg-white "}
              ${searchHistory ? "flex" : "hidden"} flex-col duration-500`}
             >
@@ -138,19 +159,59 @@ function Navbar() {
              ${dark ? "bg-[#191919] text-white" : "bg-white text-[#2424242]"} duration-500 cursor-pointer `} size={40} />
           </div>
         </div>
-            {/* phone mode */}
+        {/* phone mode */}
         <div className=' flex gap-4  items-center  '>
+
+
+
+
+
           <div className=' flex md:hidden  '>
             <Search
               onClick={() => setSearchHistory(!searchHistory)}
               className={` cursor-pointer  p-2 rounded-full ${dark ? "md:bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
-             {/* phone search history */}
+            {/* phone search history */}
             <div
-              className={`min-h-28 h-fit max-h-96 w-full   overflow-auto  no-scrollbar  bg-[#191919] p-1 py-2    absolute   left-0      top-14  
+              className={`min-h-28 h-fit max-h-[100vh] w-full   overflow-auto  scrollbar-hide-track bg-[#191919] p-1 py-2    absolute   left-0      top-14  
               ${dark ? "md:bg-[#181818] " : "bg-white "}
-             ${searchHistory ? "flex" : "hidden"} flex-col duration-500`}
+             ${searchHistory ? "flex duration-500" : "hidden duration-500"} flex-col duration-500`}
             >
+
               {
+                !phoneSearchBar ? (
+                  <>
+                    <div className={` fixed top-2 w-full flex justify-center items-center  px-5
+                  ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "} 
+                  `}>
+                      <ArrowLeft onClick={() => setSearchHistory(!searchHistory)} />
+                      <div
+
+                        className={`  borger flex md:hidden gap-2 justify-between  mx-auto top-2  border border-gray-600 items-center pl-3 rounded-full cursor-pointer
+                     ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "} 
+                    `}>
+
+
+                        <input
+                          type="text"
+                          name=""
+                          id=""
+                          value={searchValue}
+                          onChange={(e) => setSearchValue(e.target.value)}
+                          placeholder='Search'
+                          className={` rounded-full rounded-r-none ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "}     w-[50vh] focus:outline-none focus:duration-0   px-2 p-1  duration-500 overflow-auto`} />
+                        <Search className={`  p-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+
+
+
+                      </div>
+                    </div>
+                  </>
+                ) : null
+              }
+
+
+              {
+
                 searchHistoryData.map((data, i) => (
 
                   <div key={i}
@@ -158,7 +219,7 @@ function Navbar() {
                     className={` cursor-pointer flex items-center gap-3 p-2 py-2   
                       ${dark ? " hover:bg-[#242424] " : "hover:bg-gray-200"} rounded-lg
                       `}
-                  ><History /> <span onClick={()=>setSearchHistory(!searchHistory)} className='w-full overflow-hidden'>{data}</span><X /></div>
+                  ><History /> <span onClick={() => setSearchHistory(!searchHistory)} className='w-full overflow-hidden'>{data}</span><X /></div>
 
                 ))
               }

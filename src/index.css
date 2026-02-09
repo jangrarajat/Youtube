@@ -2,16 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ek class banaiye jo aap kisi bhi element pe laga saken */
-.no-scrollbar {
-    /* 1. Chrome, Safari aur naye Edge ke liye */
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
-    /* 2. Firefox ke liye */
-    scrollbar-width: none;
 
-    /* 3. Internet Explorer aur purane Edge ke liye */
-    -ms-overflow-style: none;
+
+@layer utilities {
+  .scrollbar-hide-track::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-hide-track::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-hide-track::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 9999px;
+  }
+
+  .scrollbar-hide-track::-webkit-scrollbar-thumb:hover {
+    background-color: #222;
+  }
+
+  /* Firefox */
+  .scrollbar-hide-track {
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+  }
 }
