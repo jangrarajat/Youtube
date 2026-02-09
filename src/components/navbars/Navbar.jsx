@@ -63,7 +63,7 @@ function Navbar() {
     <>
       {/*  Navbar */}
       <div
-        className={`w-full h-14 flex items-center justify-between px-3  backdrop-blur-md duration-500
+        className={`w-full h-14 flex items-center justify-between px-3 z-50  backdrop-blur-md duration-500
                   ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"}  `}>
         {/* logo  */}
         <div className=' flex gap-2 items-center '>
@@ -125,7 +125,7 @@ function Navbar() {
             {/* search history */}
 
             <div
-              className={`min-h-28 h-fit max-h-80  w-[75vh] overflow-y-scroll scrollbar-hide-track   bg-[#191919] p-1 py-2    absolute     mx-auto   top-14  rounded-lg
+              className={`min-h-28 h-fit max-h-80 z-50  w-[75vh] overflow-y-scroll scrollbar-hide-track   bg-[#191919] p-1 py-2    absolute     mx-auto   top-28  rounded-lg
               ${dark ? "md:bg-[#181818] " : "bg-white "}
              ${searchHistory ? "flex" : "hidden"} flex-col duration-500`}
             >
@@ -164,7 +164,7 @@ function Navbar() {
               className={` cursor-pointer  p-2 rounded-full ${dark ? "md:bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
             {/* phone search history */}
             <div
-              className={`min-h-28 h-fit max-h-[100vh] w-full   overflow-auto  scrollbar-hide-track bg-[#191919] p-1 py-2    absolute   left-0      top-14  
+              className={`min-h-28 h-fit max-h-[100vh] w-full   overflow-auto  scrollbar-hide-track bg-[#191919] p-1 py-2    absolute   left-0      top-28 
               ${dark ? "md:bg-[#181818] " : "bg-white "}
              ${searchHistory ? "flex duration-500" : "hidden duration-500"} flex-col duration-500`}
             >
@@ -278,12 +278,12 @@ function Navbar() {
       </div>
 
 
-      <div className={`    w-full h-14 flex flex-row gap-3 
-    overflow-x-scroll 
-    whitespace-nowrap flex-nowrap
-    px-5 no-scrollbar items-center
-    backdrop-blur-md duration-500
-                  ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"}  `}>
+      <div className={`     w-full h-14 flex flex-row gap-3 
+                       overflow-x-scroll 
+                       whitespace-nowrap flex-nowrap
+                       px-5 no-scrollbar items-center
+                       backdrop-blur-md duration-500
+                  ${dark ? "bg-[#242424]  text-white" : "bg-white text-[#2424242]"}  `}>
         {
           filterTag.map((tag, i) => (
 
