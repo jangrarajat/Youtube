@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ThemeContext } from '../../contexts/ThemeContext'
 function Navbar() {
   const [textColor, setTextColor] = useState("white")
-  const [menu, setMenu] = useState(true)
+  const [menu, setMenu] = useState(false)
   const [searchValue, setSearchValue] = useState("")
   const [searchHistory, setSearchHistory] = useState(false)
   const [phoneSearchBar, setPhoneSearchBar] = useState(false)
@@ -27,6 +27,24 @@ function Navbar() {
 
   ]
 
+  const filterTag = ["all",
+    "gaming",
+    "music",
+    "live",
+    " mixes",
+    "indian music",
+    "gaming",
+    "music",
+    "live",
+    " mixes",
+    "indian music",
+    "gaming",
+    "music",
+    "live",
+    " mixes",
+    "indian music",
+  ]
+
   const searchHistoryData = [
     "Lofi hip hop radio - beats to relax/study",
     "JavaScript Tutorial for Beginners 2026",
@@ -36,40 +54,14 @@ function Navbar() {
     "React vs Next.js: Which one to choose?",
     "Funny cat videos compilation",
     "Top 10 stocks to buy right now",
-   
- "Lofi hip hop radio - beats to relax/study",
-    "JavaScript Tutorial for Beginners 2026",
-    "How to make butter chicken at home",
-    "iPhone 17 Pro Max unboxing and review",
-    "Best travel destinations in India 2026",
-    "React vs Next.js: Which one to choose?",
-    "Funny cat videos compilation",
-    "Top 10 stocks to buy right now", "Lofi hip hop radio - beats to relax/study",
-    "JavaScript Tutorial for Beginners 2026",
-    "How to make butter chicken at home",
-    "iPhone 17 Pro Max unboxing and review",
-    "Best travel destinations in India 2026",
-    "React vs Next.js: Which one to choose?",
-    "Funny cat videos compilation",
-    "Top 10 stocks to buy right now", "Lofi hip hop radio - beats to relax/study",
-    "JavaScript Tutorial for Beginners 2026",
-    "How to make butter chicken at home",
-    "iPhone 17 Pro Max unboxing and review",
-    "Best travel destinations in India 2026",
-    "React vs Next.js: Which one to choose?",
-    "Funny cat videos compilation",
-    "Top 10 stocks to buy right now", "Lofi hip hop radio - beats to relax/study",
-    "JavaScript Tutorial for Beginners 2026",
-    "How to make butter chicken at home",
-    "iPhone 17 Pro Max unboxing and review",
-    "Best travel destinations in India 2026",
-    "React vs Next.js: Which one to choose?",
-    "Funny cat videos compilation",
-    "Top 10 stocks to buy right now",
+
+
+
   ]
 
   return (
     <>
+      {/*  Navbar */}
       <div
         className={`w-full h-14 flex items-center justify-between px-3  backdrop-blur-md duration-500
                   ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"}  `}>
@@ -199,7 +191,7 @@ function Navbar() {
                           onChange={(e) => setSearchValue(e.target.value)}
                           placeholder='Search'
                           className={` rounded-full rounded-r-none ${dark ? "bg-[#242424] text-white " : "bg-white text-[#242424] "}     w-full focus:outline-none focus:duration-0   px-2 p-1  duration-500 overflow-auto`} />
-                        <Search onClick={()=>setSearchHistory(!searchHistory)} className={`  px-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
+                        <Search onClick={() => setSearchHistory(!searchHistory)} className={`  px-2 rounded-r-full ${dark ? "bg-[#191919] " : "bg-white "} duration-500 `} size={40} />
 
 
 
@@ -286,20 +278,32 @@ function Navbar() {
       </div>
 
 
+      <div className={`    w-full h-14 flex flex-row gap-3 
+    overflow-x-scroll 
+    whitespace-nowrap flex-nowrap
+    px-5 no-scrollbar items-center
+    backdrop-blur-md duration-500
+                  ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242]"}  `}>
+        {
+          filterTag.map((tag, i) => (
+
+            <div key={i}
+              className={`p-2 px-3 whitespace-nowrap rounded-lg w-fit   text-sm uppercase   ${dark ? "bg-[#181818]  text-white" : "bg-gray-200 text-[#2424242]"}  duration-500`}
+            >
+              {tag}
+            </div>
+
+          ))
+        }
+
+      </div>
 
 
-
-
-
-
-
-
-
-
+      {/* menu ride bar  */}
 
       <div className={`w-60 h-[100%] flex flex-col  p-2  z-50 fixed top-0  
          ${dark ? "bg-[#242424] text-white" : "bg-white text-[#2424242] "} duration-500
-           ${menu ? "-left-60" : "left-0"} duration-200 `}
+           ${menu ? "left-0" : "-left-60"} duration-200 `}
       >
         <div className=' flex gap-2 items-center '>
           <Menu
@@ -339,14 +343,16 @@ function Navbar() {
           </svg>
 
         </div>
-        <div className='w-full h-full flex flex-col overflow-auto no-scrollbar '>
+        <div
+          onClick={() => setMenu(false)}
+          className='w-full h-full flex flex-col overflow-auto no-scrollbar '>
           {menuList.map((item, i) => (
 
             <div
               key={i}
               onClick={item.function}
               className={` flex p-2 gap-3 cursor-pointer ${dark ? " hover:bg-[#191919] " : "hover:bg-gray-200"} rounded-lg`} >
-              <span>{item.icon}</span><span>{item.name}</span>
+              <span >{item.icon}</span><span>{item.name}</span>
             </div>
 
           ))}

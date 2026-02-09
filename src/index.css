@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ek class banaiye jo aap kisi bhi element pe laga saken */
+.no-scrollbar {
+    /* 1. Chrome, Safari aur naye Edge ke liye */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
+    /* 2. Firefox ke liye */
+    scrollbar-width: none;
+
+    /* 3. Internet Explorer aur purane Edge ke liye */
+    -ms-overflow-style: none;
+}
 
 
 @layer utilities {
