@@ -91,14 +91,19 @@ function VideoSection() {
                                                     autoPlay
                                                     loop
                                                     playsInline
-                                                    className="w-full h-full object-cover"
+                                                    preload="metadata"
+                                                    className={`w-full h-full object-cover 
+                                                        ${videoPreview === i ? "opacity-100" : "opacity-0"}`}
+
                                                 />
                                             </>
                                         ) : (
                                             <img
                                                 src={v.thumbnail}
                                                 alt="thumbnail"
-                                                className="w-full h-full object-cover"
+                                                className={`w-full h-full object-cover
+                                                    ${videoPreview === i ? "opacity-0" : "opacity-100"}`}
+
                                             />
 
                                         )}
