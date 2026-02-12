@@ -76,8 +76,11 @@ function VideoSection() {
                                 <div key={i}
                                     onMouseEnter={() => setVideoPreview(i)}
                                     onMouseLeave={() => setVideoPreview(null)}
+                                    onTouchStart={() => setVideoPreview(i)}
+                                    onTouchEnd={() => setVideoPreview(null)}
+
                                     className={`    cursor-pointer  md:rounded-xl md:p-3 flex flex-col md:gap-1 duration-500
-                                 ${dark ? "text-white  hover:bg-[#191919] " : "text-[#242424] hover:bg-gray-300"}
+                                 ${dark ? "text-white  md:hover:bg-[#191919] " : "text-[#242424] md:hover:bg-gray-300"}
                                 `}>
                                     <div className="w-full aspect-video overflow-hidden md:rounded-xl">
                                         {videoPreview === i ? (
