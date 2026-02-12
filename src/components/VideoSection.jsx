@@ -1,11 +1,11 @@
 import { CircleUserRound, Clapperboard, Dot, House, TvMinimalPlay } from 'lucide-react'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext'
 import { videoData } from '../api/videoData'
 
 function VideoSection() {
     const { dark } = useContext(ThemeContext)
-
+    const [videoPreview, setVideoPreview] = useState(3)
 
     const filterTag = ["all",
         "gaming",
@@ -73,14 +73,35 @@ function VideoSection() {
                      gap-2 md:p-2 '>
                         {
                             videoData.map((v, i) => (
-                                <div key={i} className={`    cursor-pointer  md:rounded-xl md:p-3 flex flex-col md:gap-1 duration-500
+                                <div key={i}
+                                    onMouseEnter={() => setVideoPreview(i)}
+                                    onMouseLeave={() => setVideoPreview(null)}
+                                    className={`    cursor-pointer  md:rounded-xl md:p-3 flex flex-col md:gap-1 duration-500
                                  ${dark ? "text-white  hover:bg-[#191919] " : "text-[#242424] hover:bg-gray-300"}
                                 `}>
-                                    <div  >
+                                    <div className="w-full aspect-video overflow-hidden md:rounded-xl">
+                                        {videoPreview === i ? (
+                                            <>
+                                                <video
+                                                    src={v.videoUrl}
+                                                    muted
+                                                    autoPlay
+                                                    loop
+                                                    playsInline
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </>
+                                        ) : (
+                                            <img
+                                                src={v.thumbnail}
+                                                alt="thumbnail"
+                                                className="w-full h-full object-cover"
+                                            />
 
-                                        <img src={v.thumbnail} alt="thumbnail" className=' w-full  md:rounded-xl' />
+                                        )}
                                     </div>
-                                    <div className=' flex items-center gap-3 ' >
+
+                                    <div className=' flex items-center gap-3 p-2 ' >
                                         <div className='h-10 w-10 rounded-full bg-gray-300 overflow-hidden'>
                                             <img src={v.channelAvatar} alt="" />
                                         </div>
@@ -95,7 +116,7 @@ function VideoSection() {
                                             <p className={`pl-12  text-sm
                                             ${dark ? "text-gray-300  " : "text-[#242424] "}
                                             `}>{v.views} </p>
-                                            <Dot/>
+                                            <Dot />
                                             <p className={`  text-sm
                                             ${dark ? "text-gray-300   " : "text-[#242424] "}
                                             `}>{v.uploadTime}</p>
