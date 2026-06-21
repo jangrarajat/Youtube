@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.18.0",
     "lucide": "^0.563.0",
+    "lucide-react": "^1.21.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.18.0",
+    "react-top-loading-bar": "^3.0.2",
+    "socket.io-client": "^4.8.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

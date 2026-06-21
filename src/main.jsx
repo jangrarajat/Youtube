@@ -5,13 +5,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import { ThemeProvider } from './contexts/ThemeContext.jsx'
 
+// Yahan path me "/*" lagaya hai taaki nested routes (jaise /video/:id) theek se chal sakein
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*", 
     element: <App />
   }
 ])
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
